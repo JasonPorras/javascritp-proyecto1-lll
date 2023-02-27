@@ -1,36 +1,29 @@
 body {
-  position: relative;
   height: 100vh;
   margin: 0;
 }
 
-.gallery {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+.container {
+  display: flex;
+  padding-left: 50px;
+  margin: 0 auto;
   gap: 20px;
-  list-style: none;
-  padding: 0;
-  margin: auto;
-  max-width: 1000px;
 }
 
-.gallery li {
+.bar {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  width: 200px;
 }
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
 
-.card-info {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 600px;
-  height: 600px;
-  background-color: black;
-}
-
-
-.card-hidden {
-  display: none;
+  gap: 20px;
+  list-style: none;
+  padding-right: 50px;
+  margin: auto;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
 }
