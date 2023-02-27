@@ -267,3 +267,6 @@ radios.forEach((radio) => {
     })
   })
 })
+
+
+console.log('Hola');
