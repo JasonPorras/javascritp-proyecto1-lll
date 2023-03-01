@@ -8,6 +8,8 @@ class Animal {
     habitat,
     imagen,
     claseAnimal,
+    clasificacion,
+    idAnimal
   ) {
     this.nombreComun = nombreComun
     this.nombreCientifico = nombreCientifico
@@ -17,6 +19,8 @@ class Animal {
     this.habitat = habitat
     this.imagen = imagen
     this.claseAnimal = claseAnimal
+    this.clasificacion = clasificacion
+    this.idAnimal
   }
 
   paintJustImages(arrGallery) {
@@ -24,10 +28,40 @@ class Animal {
       return `
       <li class="flex">
         <img src="${item.imagen}" alt="${item.nombreComun}">
-        <h3>${item.nombreComun}</h3>
+        <h3 class= "center">${item.nombreComun}</h3>
       </li>
     `
     }).join('')
+  }
+}
+
+
+
+class Invertebrados extends Animal {
+  constructor(
+    nombreComun,
+    nombreCientifico,
+    tipoSangre,
+    dieta,
+    reproduccion,
+    habitat,
+    imagen,
+    claseAnimal,
+    clasificacion,
+    idAnimal
+  ) {
+    super(
+      nombreComun,
+      nombreCientifico,
+      tipoSangre,
+      dieta,
+      reproduccion,
+      habitat,
+      imagen,
+      claseAnimal,
+      clasificacion,
+      idAnimal
+    )
   }
 }
 
@@ -42,6 +76,8 @@ class Mamifero extends Animal {
     pelo,
     imagen,
     claseAnimal,
+    clasificacion,
+    idAnimal
   ) {
     super(
       nombreComun,
@@ -52,6 +88,8 @@ class Mamifero extends Animal {
       habitat,
       imagen,
       claseAnimal,
+      clasificacion,
+      idAnimal
     )
     this.pelo = pelo
   }
@@ -162,7 +200,7 @@ class Aves extends Animal {
 }
 
 const gallery = [
-/*  new Invertebrados(
+  new Invertebrados(
     'Camarones',
     'Caridea',
     'Omnívoro',
@@ -170,18 +208,17 @@ const gallery = [
     'Agua',
     'Naranja,blancos',
     'img/camaron.jpeg',
-    'Invertebrados',
+    'invertebrado',
   ),
   new Invertebrados(
     'Langostas',
     'Palinurus elephas',
-    'Caridea',
     'Omnívoro',
     'Ovíparos',
     'Agua',
     'rojos,blancas',
     'img/langosta.jpeg',
-    'Invertebrados',
+    'invertebrado',
   ),
   new Invertebrados(
     'Cangrejos',
@@ -191,9 +228,8 @@ const gallery = [
     'Agua',
     'rojos,blancos,naranjas',
     'img/cangrejo.jpeg',
-    'Invertebrados',
+    'invertebrado',
   ),
-  */
   new Mamifero(
     'Caballo doméstico',
     'Equus caballus',
@@ -204,6 +240,7 @@ const gallery = [
     'Color Café',
     'img/caballo.jpeg',
     'Mamífero',
+    'vertebrados',
   ),
   new Mamifero(
     'Ballena',
@@ -372,18 +409,21 @@ function filterAnimals(value) {
 
     if (value === item.claseAnimal.toLowerCase()) {
       return item
-    } else if (value === item.tipoSangre.toLowerCase()) {
+    }
+    else if (value === item.tipoSangre.toLowerCase()) {
       return item
-    } else if (value === item.dieta.toLowerCase()) {
+    }
+    else if (value === item.dieta.toLowerCase()) {
       return item
     }
     else if (value === item.reproduccion.toLowerCase()) {
       return item
-    } else if (value === item.habitat.toLowerCase()) {
+    }
+    else if (value === item.habitat.toLowerCase()) {
       return item
     }
   })
-  console.log (result)
+  console.log(result)
   animals.paintJustImages(result)
 }
 
@@ -400,3 +440,14 @@ radios.forEach((radio) => {
     })
   })
 })
+/*
+function printThis(position) {
+  const infoAnimal = gallery.filter(item => item.idAnimal === position);
+}
+
+document.querySelector('.gallery').addEventListener("click", (e) => {
+  if (e.target.matches('img')) {
+    printThis(e.target.dataset.id)
+  }
+})
+*()*/
