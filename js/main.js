@@ -162,6 +162,107 @@ class Aves extends Animal {
 }
 
 const gallery = [
+/*  new Invertebrados(
+    'Camarones',
+    'Caridea',
+    'Omnívoro',
+    'Ovíparos',
+    'Agua',
+    'Naranja,blancos',
+    'img/camaron.jpeg',
+    'Invertebrados',
+  ),
+  new Invertebrados(
+    'Langostas',
+    'Palinurus elephas',
+    'Caridea',
+    'Omnívoro',
+    'Ovíparos',
+    'Agua',
+    'rojos,blancas',
+    'img/langosta.jpeg',
+    'Invertebrados',
+  ),
+  new Invertebrados(
+    'Cangrejos',
+    'Brachyura',
+    'Omnívoro',
+    'Ovíparos',
+    'Agua',
+    'rojos,blancos,naranjas',
+    'img/cangrejo.jpeg',
+    'Invertebrados',
+  ),
+  */
+  new Mamifero(
+    'Caballo doméstico',
+    'Equus caballus',
+    'Caliente',
+    'Herbívoros',
+    'Vivíparo',
+    'Tierra',
+    'Color Café',
+    'img/caballo.jpeg',
+    'Mamífero',
+  ),
+  new Mamifero(
+    'Ballena',
+    'Cetacea',
+    'Caliente',
+    'Carnívoro',
+    'Vivíparo',
+    'Agua',
+    'No presenta',
+    'img/ballena.jpeg',
+    'Mamífero',
+  ),
+  new Mamifero(
+    'Delfín',
+    'Delphinidae',
+    'Caliente',
+    'Carnívoro',
+    'Vivíparo',
+    'Agua',
+    'No presenta',
+    'img/delfines.jpeg',
+    'Mamífero',
+  ),
+  new Peces(
+    'Sardinas',
+    'Sardina pilchardus',
+    'Caliente',
+    'Omnívoro',
+    'Ovíparos',
+    'Agua',
+    'Sí',
+    'Gris plateado',
+    'img/sardina.jpeg',
+    'pez',
+  ),
+  new Peces(
+    'Atún',
+    'Thunnus',
+    'Caliente',
+    'Carnívoro',
+    'Ovíparos',
+    'Agua',
+    'Sí',
+    'Gris plateado,verde,amarillas',
+    'img/atun.jpeg',
+    'pez',
+  ),
+  new Peces(
+    'Pez Sapo',
+    'Sphoeroides lobatus',
+    'Caliente',
+    'Carnívoro',
+    'Ovíparos',
+    'Agua',
+    'Sí',
+    'Verde,Cafe,Negro',
+    'img/pez sapo.jpeg',
+    'pez',
+  ),
   new Reptiles(
     'Caimán de Cuvier',
     'Paleosuchus palpebrosus',
@@ -203,7 +304,7 @@ const gallery = [
     'Ovíparo',
     'Agua y Tierra',
     'img/rana.jpeg',
-    'anfibio',
+    'Anfibio',
   ),
   new Anfibio(
     'Sapo',
@@ -213,7 +314,7 @@ const gallery = [
     'Ovíparo',
     'Agua y Tierra',
     'img/sapo.jpeg',
-    'anfibio',
+    'Anfibio',
   ),
   new Anfibio(
     'Salamandra',
@@ -223,12 +324,44 @@ const gallery = [
     'Ovíparo',
     'Agua',
     'img/salamandra.jpeg',
-    'anfibio',
+    'Anfibio',
   ),
+  new Aves(
+    'Ganso',
+    'Anser',
+    'Caliente',
+    'Omnívoro',
+    'Ovíparo',
+    'Tierra',
+    'Blancas,Grises,Marrones',
+    'img/ganso.jpeg',
+    'aves',
+  ),
+  new Aves(
+    'Cuervo',
+    'Corvus corax',
+    'Caliente',
+    'Omnívoro',
+    'Ovíparo',
+    'Tierra',
+    'Negras',
+    'img/cuervo.jpeg',
+    'aves',
+  ),
+  new Aves(
+    'Búho',
+    'Strigiformes',
+    'Caliente',
+    'Carnívoro',
+    'Ovíparo',
+    'Tierra',
+    'Blancas,Marrones,Gris,Negro',
+    'img/buho.jpeg',
+    'aves',
+  )
 ]
 const animals = new Animal()
 animals.paintJustImages(gallery)
-
 
 // esta funcion filtra los animales
 function filterAnimals(value) {
@@ -236,7 +369,7 @@ function filterAnimals(value) {
     if (value === 'todos') {
       return gallery
     }
-    
+
     if (value === item.claseAnimal.toLowerCase()) {
       return item
     } else if (value === item.tipoSangre.toLowerCase()) {
@@ -244,13 +377,13 @@ function filterAnimals(value) {
     } else if (value === item.dieta.toLowerCase()) {
       return item
     }
-     else if (value === item.reproduccion.toLowerCase()) {
+    else if (value === item.reproduccion.toLowerCase()) {
       return item
     } else if (value === item.habitat.toLowerCase()) {
       return item
     }
   })
-
+  console.log (result)
   animals.paintJustImages(result)
 }
 
