@@ -9,7 +9,6 @@ class Animal {
     imagen,
     claseAnimal,
     clasificacion,
-    idAnimal
   ) {
     this.nombreComun = nombreComun
     this.nombreCientifico = nombreCientifico
@@ -20,7 +19,6 @@ class Animal {
     this.imagen = imagen
     this.claseAnimal = claseAnimal
     this.clasificacion = clasificacion
-    this.idAnimal
   }
 
   paintJustImages(arrGallery) {
@@ -28,14 +26,12 @@ class Animal {
       return `
       <li class="flex">
         <img src="${item.imagen}" alt="${item.nombreComun}">
-        <h3 class= "center">${item.nombreComun}</h3>
+        <h3>${item.nombreComun}</h3>
       </li>
     `
     }).join('')
   }
 }
-
-
 
 class Invertebrados extends Animal {
   constructor(
@@ -200,6 +196,7 @@ class Aves extends Animal {
 }
 
 const gallery = [
+
   new Invertebrados(
     'Camarones',
     'Caridea',
@@ -441,8 +438,18 @@ radios.forEach((radio) => {
   })
 })
 /*
+const images = document.querySelectorAll('img');
+
+images.forEach((images, index) => {
+  images.addEventListener('click', () => {
+    console.log(index)
+  });
+});
+*/
+
 function printThis(position) {
   const infoAnimal = gallery.filter(item => item.idAnimal === position);
+console.log(infoAnimal);
 }
 
 document.querySelector('.gallery').addEventListener("click", (e) => {
@@ -450,4 +457,3 @@ document.querySelector('.gallery').addEventListener("click", (e) => {
     printThis(e.target.dataset.id)
   }
 })
-*()*/
