@@ -7,8 +7,7 @@ class Animal {
     reproduccion,
     habitat,
     imagen,
-    claseAnimal,
-    clasificacion,
+    claseAnimal
   ) {
     this.nombreComun = nombreComun
     this.nombreCientifico = nombreCientifico
@@ -18,7 +17,6 @@ class Animal {
     this.habitat = habitat
     this.imagen = imagen
     this.claseAnimal = claseAnimal
-    this.clasificacion = clasificacion
   }
 
   paintJustImages(arrGallery) {
@@ -26,7 +24,6 @@ class Animal {
       return `
       <li class="flex">
         <img src="${item.imagen}" alt="${item.nombreComun}">
-        <h3>${item.nombreComun}</h3>
       </li>
     `
     }).join('')
@@ -43,7 +40,6 @@ class Invertebrados extends Animal {
     habitat,
     imagen,
     claseAnimal,
-    clasificacion,
     idAnimal
   ) {
     super(
@@ -55,7 +51,6 @@ class Invertebrados extends Animal {
       habitat,
       imagen,
       claseAnimal,
-      clasificacion,
       idAnimal
     )
   }
@@ -72,7 +67,6 @@ class Mamifero extends Animal {
     pelo,
     imagen,
     claseAnimal,
-    clasificacion,
     idAnimal
   ) {
     super(
@@ -84,7 +78,7 @@ class Mamifero extends Animal {
       habitat,
       imagen,
       claseAnimal,
-      clasificacion,
+
       idAnimal
     )
     this.pelo = pelo
@@ -419,11 +413,13 @@ function filterAnimals(value) {
     else if (value === item.habitat.toLowerCase()) {
       return item
     }
+    else if(value === 'vertebrado' && item.claseAnimal !== 'invertebrado') {
+      return item
+    }
   })
   console.log(result)
   animals.paintJustImages(result)
 }
-
 // habilitar, deshabilitar options y enviar value
 const radios = document.querySelectorAll('input[type="radio"][name="animal"]')
 radios.forEach((radio) => {
