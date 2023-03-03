@@ -1,6 +1,7 @@
 body {
   height: 100vh;
   margin: 0;
+  position: relative;
 }
 
 .container {
@@ -13,7 +14,13 @@ body {
 .bar {
   display: flex;
   flex-direction: column;
-  width: 200px;
+  width: 300px;
+  height: 100vh;
+  overflow: auto;
+}
+
+.bar div:last-child {
+  margin-bottom: 20px;
 }
 .gallery {
   display: grid;
@@ -23,11 +30,26 @@ body {
   padding-right: 50px;
   margin: auto;
   width: 100%;
-  max-height: 90vh;
+  height: 95vh;
   overflow-y: auto;
 }
 
 img{
   height: 200px;
   width: 200px;
+}
+
+.hidden {
+  display: none;
+}
+
+.card {
+  display: initial;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 600px;
+  height: 600px;
+  background: red;
 }
