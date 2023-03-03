@@ -1,8 +1,4 @@
 class Animal {
-  static animal = '';
-
-  static radios = document.querySelectorAll('input[type="radio"][name="animal"]');
-
 
   constructor(nombreComun, nombreCientifico, tipoSangre, dieta, reproduccion, habitat, imagen, claseAnimal,) {
     this.nombreComun = nombreComun
@@ -18,6 +14,16 @@ class Animal {
     document.querySelector('.gallery').addEventListener('click', Animal.clickImage.bind(this))
   }
 
+  static paintJustImages(arrGallery) {
+    document.getElementById('gallery').innerHTML = arrGallery.map((item) => {
+        return `
+        <li class="flex">
+          <img src="${item.imagen}" alt="${item.nombreComun}" data-id="${item.AnimalId}">
+        </li>
+      `
+    }).join('')
+  }
+
   static clickImage (e) {
 
     console.clear();
@@ -30,37 +36,48 @@ class Animal {
     }
   }
 
-  static filterAnimal (animal) {
-    console.log('Hola', animal);
+  static filterAnimal (value) {
+    const result = gallery.filter((item) => {
+      if (value === 'todos') {
+        return gallery
+      }
+  
+      if (value === item.claseAnimal.toLowerCase()) {
+        return item
+      } else if (value === item.tipoSangre.toLowerCase()) {
+        return item
+      } else if (value === item.dieta.toLowerCase()) {
+        return item
+      } else if (value === item.reproduccion.toLowerCase()) {
+        return item
+      } else if (value === item.habitat.toLowerCase()) {
+        return item
+      } else if (value === 'vertebrado' && item.claseAnimal !== 'invertebrado') {
+        return item
+      }
+    })
+    Animal.paintJustImages(result)
+
   }
 
   static radioButton() {
-    Animal.radios.forEach((radio) => {
-      radio.addEventListener('change', (e) => {
-        console.log(e.target.value);
-        Animal.radios.forEach((otherRadio) => {
-          if (otherRadio !== radio) {
-            otherRadio.checked = true
-          }
-        })
-      })
-    })
+    const radios = document.querySelectorAll('input[type="radio"][name="animal"]');
+    // radios.forEach((radio) => {
+    //   radio.addEventListener('change', (e) => {
+    //     Animal.filterAnimal(e.target.value)
+
+    //     radios.forEach((otherRadio) => {
+    //       if (otherRadio !== radio) {
+    //         otherRadio.checked = true
+    //       }
+    //     })
+    //   })
+    // })
   }
 
-  paintJustImages(arrGallery) {
-    document.getElementById('gallery').innerHTML = arrGallery.map((item) => {
-        return `
-        <li class="flex">
-          <img src="${item.imagen}" alt="${item.nombreComun}" data-id="${item.AnimalId}">
-        </li>
-      `
-    }).join('')
-  }
+  
 }
-
-const radioButton = new Animal()
-// radioButton.radioButton()
-
+Animal.radioButton();
 
 class Invertebrados extends Animal {
   constructor( nombreComun, nombreCientifico, tipoSangre, dieta, reproduccion, habitat, imagen, claseAnimal) {
@@ -373,6 +390,8 @@ const gallery = [
     'aves',
   ),
 ]
+Animal.paintJustImages(gallery)
+
 
 function addAnimalId () {
   for (let i = 0; i < gallery.length; i++) {
@@ -388,29 +407,5 @@ const ave = new Aves()
 const anfibio = new Anfibio()
 const pez = new Peces()
 
-const animals = new Animal()
-animals.paintJustImages(gallery)
-
-// // esta funcion filtra los animales
-function filterAnimals(value) {
-  const result = gallery.filter((item) => {
-    if (value === 'todos') {
-      return gallery
-    }
-
-    if (value === item.claseAnimal.toLowerCase()) {
-      return item
-    } else if (value === item.tipoSangre.toLowerCase()) {
-      return item
-    } else if (value === item.dieta.toLowerCase()) {
-      return item
-    } else if (value === item.reproduccion.toLowerCase()) {
-      return item
-    } else if (value === item.habitat.toLowerCase()) {
-      return item
-    } else if (value === 'vertebrado' && item.claseAnimal !== 'invertebrado') {
-      return item
-    }
-  })
-  animals.paintJustImages(result)
-}
+// const animals = new Animal()
+// animals.paintJustImages(gallery)
