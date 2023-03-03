@@ -1,5 +1,4 @@
 body {
-  height: 100vh;
   margin: 0;
   position: relative;
 }
@@ -44,7 +43,6 @@ img{
 }
 
 .card {
-  display: initial;
   position: absolute;
   top: 50%;
   left: 50%;

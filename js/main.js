@@ -1,14 +1,10 @@
 class Animal {
-  constructor(
-    nombreComun,
-    nombreCientifico,
-    tipoSangre,
-    dieta,
-    reproduccion,
-    habitat,
-    imagen,
-    claseAnimal
-  ) {
+  static animal = '';
+
+  static radios = document.querySelectorAll('input[type="radio"][name="animal"]');
+
+
+  constructor(nombreComun, nombreCientifico, tipoSangre, dieta, reproduccion, habitat, imagen, claseAnimal,) {
     this.nombreComun = nombreComun
     this.nombreCientifico = nombreCientifico
     this.tipoSangre = tipoSangre
@@ -17,42 +13,66 @@ class Animal {
     this.habitat = habitat
     this.imagen = imagen
     this.claseAnimal = claseAnimal
+
+
+    document.querySelector('.gallery').addEventListener('click', Animal.clickImage.bind(this))
+  }
+
+  static clickImage (e) {
+
+    console.clear();
+    if(e.target.matches('img')) {
+      // Animal.animal = e.target.value
+      console.log(e.target);
+      console.log(e.target.dataset.id);
+     
+     
+    }
+  }
+
+  static filterAnimal (animal) {
+    console.log('Hola', animal);
+  }
+
+  static radioButton() {
+    Animal.radios.forEach((radio) => {
+      radio.addEventListener('change', (e) => {
+        console.log(e.target.value);
+        Animal.radios.forEach((otherRadio) => {
+          if (otherRadio !== radio) {
+            otherRadio.checked = true
+          }
+        })
+      })
+    })
   }
 
   paintJustImages(arrGallery) {
     document.getElementById('gallery').innerHTML = arrGallery.map((item) => {
-      return `
-      <li class="flex">
-        <img src="${item.imagen}" alt="${item.nombreComun}">
-      </li>
-    `
+        return `
+        <li class="flex">
+          <img src="${item.imagen}" alt="${item.nombreComun}" data-id="${item.AnimalId}">
+        </li>
+      `
     }).join('')
   }
 }
 
+const radioButton = new Animal()
+// radioButton.radioButton()
+
+
 class Invertebrados extends Animal {
-  constructor(
-    nombreComun,
-    nombreCientifico,
-    tipoSangre,
-    dieta,
-    reproduccion,
-    habitat,
-    imagen,
-    claseAnimal,
-    idAnimal
-  ) {
-    super(
-      nombreComun,
-      nombreCientifico,
-      tipoSangre,
-      dieta,
-      reproduccion,
-      habitat,
-      imagen,
-      claseAnimal,
-      idAnimal
-    )
+  constructor( nombreComun, nombreCientifico, tipoSangre, dieta, reproduccion, habitat, imagen, claseAnimal) {
+    super(nombreComun, nombreCientifico, tipoSangre, dieta, reproduccion, habitat, imagen, claseAnimal,)
+  }
+
+  paintAnimal(animal) {
+    const paintThisAnimal = gallery[animal]
+    document.querySelector('.animal-info').innerHTML = `
+      <img src="${paintThisAnimal.imagen}" alt="${paintThisAnimal.nombreComun}">
+      <h2> ${paintThisAnimal.nombreComun} </h2>
+    `
   }
 }
 
@@ -67,7 +87,7 @@ class Mamifero extends Animal {
     pelo,
     imagen,
     claseAnimal,
-    idAnimal
+   
   ) {
     super(
       nombreComun,
@@ -79,118 +99,83 @@ class Mamifero extends Animal {
       imagen,
       claseAnimal,
 
-      idAnimal
+     
     )
     this.pelo = pelo
+  }
+
+  paintAnimal(animal) {
+    console.log(animal)
+    document.querySelector('.animal-info').innerHTML = `
+      <img src="${animal.imagen}" alt="${animal.nombreComun}">
+      <h2> ${animal.nombreComun} </h2>
+    `
   }
 }
 
 class Peces extends Animal {
-  constructor(
-    nombreComun,
-    nombreCientifico,
-    tipoSangre,
-    dieta,
-    reproduccion,
-    habitat,
-    aletas,
-    escamas,
-    imagen,
-    claseAnimal,
-  ) {
-    super(
-      nombreComun,
-      nombreCientifico,
-      tipoSangre,
-      dieta,
-      reproduccion,
-      habitat,
-      imagen,
-      claseAnimal,
-    )
+  constructor( nombreComun, nombreCientifico, tipoSangre, dieta, reproduccion, habitat, aletas, escamas, imagen, claseAnimal,) {
+    super( nombreComun, nombreCientifico, tipoSangre, dieta, reproduccion, habitat, imagen, claseAnimal,)
     this.aletas = aletas
     this.escamas = escamas
+  }
+
+  paintAnimal(animal) {
+    console.log(animal)
+    document.querySelector('.animal-info').innerHTML = `
+      <img src="${animal.imagen}" alt="${animal.nombreComun}">
+      <h2> ${animal.nombreComun} </h2>
+    `
   }
 }
 
 class Reptiles extends Animal {
-  constructor(
-    nombreComun,
-    nombreCientifico,
-    tipoSangre,
-    dieta,
-    reproduccion,
-    habitat,
-    escamas,
-    imagen,
-    claseAnimal,
+  constructor( nombreComun, nombreCientifico, tipoSangre, dieta, reproduccion, habitat, escamas, imagen, claseAnimal,
   ) {
-    super(
-      nombreComun,
-      nombreCientifico,
-      tipoSangre,
-      dieta,
-      reproduccion,
-      habitat,
-      imagen,
-      claseAnimal,
-    )
+    super(nombreComun, nombreCientifico, tipoSangre, dieta, reproduccion, habitat, imagen, claseAnimal,)
     this.escamas = escamas
+  }
+
+  paintAnimal(animal) {
+    console.log(animal)
+    document.querySelector('.animal-info').innerHTML = `
+      <img src="${animal.imagen}" alt="${animal.nombreComun}">
+      <h2> ${animal.nombreComun} </h2>
+    `
   }
 }
 
 class Anfibio extends Animal {
-  constructor(
-    nombreComun,
-    nombreCientifico,
-    tipoSangre,
-    dieta,
-    reproduccion,
-    habitat,
-    imagen,
-    claseAnimal,
-  ) {
-    super(
-      nombreComun,
-      nombreCientifico,
-      tipoSangre,
-      dieta,
-      reproduccion,
-      habitat,
-      imagen,
-      claseAnimal,
-    )
+  constructor( nombreComun, nombreCientifico, tipoSangre, dieta, reproduccion, habitat, imagen, claseAnimal,) {
+    super( nombreComun, nombreCientifico, tipoSangre, dieta, reproduccion, habitat, imagen, claseAnimal,)
+  }
+
+  paintAnimal(animal) {
+    console.log(animal)
+    document.querySelector('.animal-info').innerHTML = `
+      <img src="${animal.imagen}" alt="${animal.nombreComun}">
+      <h2> ${animal.nombreComun} </h2>
+    `
   }
 }
 
 class Aves extends Animal {
-  constructor(
-    nombreComun,
-    nombreCientifico,
-    tipoSangre,
-    dieta,
-    reproduccion,
-    habitat,
-    plumas,
-    imagen,
-    claseAnimal,
-  ) {
-    super(
-      nombreComun,
-      nombreCientifico,
-      tipoSangre,
-      dieta,
-      reproduccion,
-      habitat,
-      imagen,
-      claseAnimal,
-    )
+  constructor( nombreComun, nombreCientifico, tipoSangre, dieta, reproduccion, habitat, plumas, imagen, claseAnimal,) {
+    super( nombreComun, nombreCientifico, tipoSangre, dieta, reproduccion, habitat, imagen, claseAnimal,)
     this.plumas = plumas
+  }
+
+  paintAnimal(animal) {
+    console.log(animal)
+    document.querySelector('.animal-info').innerHTML = `
+      <img src="${animal.imagen}" alt="${animal.nombreComun}">
+      <h2> ${animal.nombreComun} </h2>
+    `
   }
 }
 
-const gallery = [
 
+const gallery = [
   new Invertebrados(
     'Camarones',
     'Caridea',
@@ -386,12 +371,27 @@ const gallery = [
     'Blancas,Marrones,Gris,Negro',
     'img/buho.jpeg',
     'aves',
-  )
+  ),
 ]
+
+function addAnimalId () {
+  for (let i = 0; i < gallery.length; i++) {
+    gallery[i].AnimalId = i + 1;
+  }
+}
+addAnimalId()
+
+const invertebrado = new Invertebrados()
+const mamifero = new Mamifero()
+const reptil = new Reptiles()
+const ave = new Aves()
+const anfibio = new Anfibio()
+const pez = new Peces()
+
 const animals = new Animal()
 animals.paintJustImages(gallery)
 
-// esta funcion filtra los animales
+// // esta funcion filtra los animales
 function filterAnimals(value) {
   const result = gallery.filter((item) => {
     if (value === 'todos') {
@@ -400,56 +400,17 @@ function filterAnimals(value) {
 
     if (value === item.claseAnimal.toLowerCase()) {
       return item
-    }
-    else if (value === item.tipoSangre.toLowerCase()) {
+    } else if (value === item.tipoSangre.toLowerCase()) {
       return item
-    }
-    else if (value === item.dieta.toLowerCase()) {
+    } else if (value === item.dieta.toLowerCase()) {
       return item
-    }
-    else if (value === item.reproduccion.toLowerCase()) {
+    } else if (value === item.reproduccion.toLowerCase()) {
       return item
-    }
-    else if (value === item.habitat.toLowerCase()) {
+    } else if (value === item.habitat.toLowerCase()) {
       return item
-    }
-    else if(value === 'vertebrado' && item.claseAnimal !== 'invertebrado') {
+    } else if (value === 'vertebrado' && item.claseAnimal !== 'invertebrado') {
       return item
     }
   })
-  console.log(result)
   animals.paintJustImages(result)
 }
-// habilitar, deshabilitar options y enviar value
-const radios = document.querySelectorAll('input[type="radio"][name="animal"]')
-radios.forEach((radio) => {
-  radio.addEventListener('change', (e) => {
-    filterAnimals(e.target.value)
-
-    radios.forEach((otherRadio) => {
-      if (otherRadio !== radio) {
-        otherRadio.checked = false
-      }
-    })
-  })
-})
-/*
-const images = document.querySelectorAll('img');
-
-images.forEach((images, index) => {
-  images.addEventListener('click', () => {
-    console.log(index)
-  });
-});
-*/
-
-function printThis(position) {
-  const infoAnimal = gallery.filter(item => item.idAnimal === position);
-console.log(infoAnimal);
-}
-
-document.querySelector('.gallery').addEventListener("click", (e) => {
-  if (e.target.matches('img')) {
-    printThis(e.target.dataset.id)
-  }
-})
