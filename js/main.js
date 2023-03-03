@@ -61,18 +61,11 @@ class Animal {
   }
 
   static radioButton() {
-    const radios = document.querySelectorAll('input[type="radio"][name="animal"]');
-    // radios.forEach((radio) => {
-    //   radio.addEventListener('change', (e) => {
-    //     Animal.filterAnimal(e.target.value)
-
-    //     radios.forEach((otherRadio) => {
-    //       if (otherRadio !== radio) {
-    //         otherRadio.checked = true
-    //       }
-    //     })
-    //   })
-    // })
+    document.querySelector('.bar').addEventListener('click', (e) => {
+      if (e.target.matches('input[type="radio"]')) {
+        Animal.filterAnimal(e.target.value)
+      }
+    })
   }
 
   
@@ -407,5 +400,3 @@ const ave = new Aves()
 const anfibio = new Anfibio()
 const pez = new Peces()
 
-// const animals = new Animal()
-// animals.paintJustImages(gallery)
