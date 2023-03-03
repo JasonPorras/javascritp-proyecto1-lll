@@ -11,7 +11,7 @@ class Animal {
     this.claseAnimal = claseAnimal
 
 
-    document.querySelector('.gallery').addEventListener('click', Animal.clickImage.bind(this))
+    document.querySelector('.container').addEventListener('click', Animal.clickImage.bind(this))
   }
 
   static paintJustImages(arrGallery) {
@@ -25,15 +25,16 @@ class Animal {
   }
 
   static clickImage (e) {
-
     console.clear();
+
     if(e.target.matches('img')) {
-      // Animal.animal = e.target.value
       console.log(e.target);
-      console.log(e.target.dataset.id);
-     
-     
     }
+
+    if (e.target.matches('input[type="radio"]')) {
+      Animal.filterAnimal(e.target.value)
+    }
+  
   }
 
   static filterAnimal (value) {
@@ -57,20 +58,9 @@ class Animal {
       }
     })
     Animal.paintJustImages(result)
-
   }
-
-  static radioButton() {
-    document.querySelector('.bar').addEventListener('click', (e) => {
-      if (e.target.matches('input[type="radio"]')) {
-        Animal.filterAnimal(e.target.value)
-      }
-    })
-  }
-
   
 }
-Animal.radioButton();
 
 class Invertebrados extends Animal {
   constructor( nombreComun, nombreCientifico, tipoSangre, dieta, reproduccion, habitat, imagen, claseAnimal) {
@@ -384,6 +374,7 @@ const gallery = [
   ),
 ]
 Animal.paintJustImages(gallery)
+console.log(gallery);
 
 
 function addAnimalId () {
