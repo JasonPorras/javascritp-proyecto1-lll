@@ -21,6 +21,7 @@ body {
 .bar div:last-child {
   margin-bottom: 20px;
 }
+
 .gallery {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -33,36 +34,66 @@ body {
   overflow-y: auto;
 }
 
-img{
+img {
   height: 200px;
   width: 200px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.9), 0 6px 20px 0 rgba(0, 0, 0, 0.22)
 }
 
 .hidden {
   display: none;
 }
 
-.card {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 600px;
-  height: 600px;
-  background: red;
-}
-
-.hidden {
-  display: none;
-}
 
 .show-card {
   display: initial;
+  height: 100vh;
+  width: 100%;
+  background-color: rgba(14, 14, 14, 0.68);
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container input {
+  border-radius: 10%;
+}
+
+
+.gallery img {
+  border-radius: 10%;
+}
+
+
+#btn-close {
+  color: rgb(255, 255, 255);
+  background-color: #2E3840;
+  font-size: 1.6rem;
+  font-weight: 500;
+
+  border: none;
+  padding: 5px 12px;
+}
+
+#btn-close:hover {
+  color: rgb(255, 255, 255);
+
+  background-color: #ff1212;
+}
+
+
+.tab {
+  background-color: #2E3840;
+  text-align: right;
+}
+
+
+.modal {
   width: 600px;
   height: 600px;
-  background: #fbf1e4;
+  background-color: rgb(253, 253, 253);
 }
