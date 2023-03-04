@@ -15,16 +15,18 @@ class Animal {
   }
 
   static paintJustImages(arrGallery) {
+    Animal.addAnimalId()
+
     document.getElementById('gallery').innerHTML = arrGallery.map((item) => {
-        return `
+      return `
         <li class="flex">
-          <img src="${item.imagen}" alt="${item.nombreComun}" data-id="${item.AnimalId}">
+          <img src="${item.imagen}" alt="${item.nombreComun}" data-id="${item.idAnimal}">
         </li>
       `
     }).join('')
   }
 
-  static openCard () {
+  static openCard() {
     document.querySelector('.card').classList.toggle('show-card');
 
     document.querySelector('#btn-close').addEventListener('click', () => {
@@ -32,10 +34,30 @@ class Animal {
     })
   }
 
-  static clickEvents (e) {
-    console.clear();
+  static animalInfo(idImage) {
+    const result = gallery.filter(item => idImage === item.idAnimal);
+    Animal.paintAnimal(result[0])
+    const { claseAnimal } = result[0];
 
-    if(e.target.matches('img')) {
+    const animalClasses = {
+      'Mamífero': Mamifero,
+      'pez': Peces,
+      'reptil': Reptiles,
+      'aves': Aves,
+      'Anfibio': Anfibio,
+      'Invertebrado': Invertebrados,
+    }
+
+    if (animalClasses[claseAnimal]) {
+      animalClasses[claseAnimal].paintAnimal(result[0]);
+    }
+  }
+
+  static clickEvents(e) {
+    // console.clear();
+
+    if (e.target.matches('img')) {
+      Animal.animalInfo(e.target.dataset.id)
       Animal.openCard()
       console.log(e.target);
     }
@@ -43,15 +65,22 @@ class Animal {
     if (e.target.matches('input[type="radio"]')) {
       Animal.filterAnimal(e.target.value)
     }
-  
+
   }
 
-  static filterAnimal (value) {
+  static addAnimalId() {
+    for (let i = 0; i < gallery.length; i++) {
+      gallery[i].idAnimal = String(i + 1);
+    }
+
+  }
+
+  static filterAnimal(value) {
     const result = gallery.filter((item) => {
       if (value === 'todos') {
         return gallery
       }
-  
+
       if (value === item.claseAnimal.toLowerCase()) {
         return item
       } else if (value === item.tipoSangre.toLowerCase()) {
@@ -62,25 +91,42 @@ class Animal {
         return item
       } else if (value === item.habitat.toLowerCase()) {
         return item
-      } else if (value === 'vertebrado' && item.claseAnimal !== 'invertebrado') {
+      } else if (value === 'vertebrado' && item.claseAnimal !== 'Invertebrado') {
         return item
       }
     })
     Animal.paintJustImages(result)
   }
-  
+
+  static paintAnimal(animal) {
+    document.querySelector('.info1').innerHTML = `
+    <img src="${animal.imagen}" alt="${animal.nombreComun}">
+    <h2>Nombre Común: ${animal.nombreComun} </h2>
+    <h3>Nombre Cientifico: ${animal.nombreCientifico}</h3>
+    <p>Clase Animal: ${animal.claseAnimal}</p>
+    <p>Hatitat: ${animal.habitat}</p>
+    <p>Tipo de Sangre: ${animal.tipoSangre}</p>
+    <p>Reproduccion: ${animal.reproduccion}</p>
+    <p>Dieta: ${animal.dieta}</p>
+  `
+  }
 }
 
-class Invertebrados extends Animal {
-  constructor( nombreComun, nombreCientifico, tipoSangre, dieta, reproduccion, habitat, imagen, claseAnimal) {
-    super(nombreComun, nombreCientifico, tipoSangre, dieta, reproduccion, habitat, imagen, claseAnimal,)
-  }
 
-  paintAnimal(animal) {
-    const paintThisAnimal = gallery[animal]
-    document.querySelector('.animal-info').innerHTML = `
-      <img src="${paintThisAnimal.imagen}" alt="${paintThisAnimal.nombreComun}">
-      <h2> ${paintThisAnimal.nombreComun} </h2>
+
+class Invertebrados extends Animal {
+  constructor(nombreComun, nombreCientifico, tipoSangre, dieta, reproduccion, habitat, imagen, claseAnimal, color, proteccion, patas) {
+    super(nombreComun, nombreCientifico, tipoSangre, dieta, reproduccion, habitat, imagen, claseAnimal,)
+    this.color = color
+    this.proteccion = proteccion
+    this.patas = patas
+
+  }
+  static paintAnimal(animal) {
+    document.querySelector('.info2').innerHTML = `
+    <p>Color: ${animal.color}</p>
+    <p>proteccion: ${animal.proteccion}</p>
+    <p>patas: ${animal.patas}</p>
     `
   }
 }
@@ -96,7 +142,7 @@ class Mamifero extends Animal {
     pelo,
     imagen,
     claseAnimal,
-   
+
   ) {
     super(
       nombreComun,
@@ -108,113 +154,117 @@ class Mamifero extends Animal {
       imagen,
       claseAnimal,
 
-     
     )
     this.pelo = pelo
   }
 
-  paintAnimal(animal) {
-    console.log(animal)
-    document.querySelector('.animal-info').innerHTML = `
-      <img src="${animal.imagen}" alt="${animal.nombreComun}">
-      <h2> ${animal.nombreComun} </h2>
+  static paintAnimal(animal) {
+    document.querySelector('.info2').innerHTML = `
+      <p>Pelo: ${animal.pelo}</p>
     `
   }
 }
 
 class Peces extends Animal {
-  constructor( nombreComun, nombreCientifico, tipoSangre, dieta, reproduccion, habitat, aletas, escamas, imagen, claseAnimal,) {
-    super( nombreComun, nombreCientifico, tipoSangre, dieta, reproduccion, habitat, imagen, claseAnimal,)
+  constructor(nombreComun, nombreCientifico, tipoSangre, dieta, reproduccion, habitat, aletas, escamas, imagen, claseAnimal,) {
+    super(nombreComun, nombreCientifico, tipoSangre, dieta, reproduccion, habitat, imagen, claseAnimal,)
     this.aletas = aletas
     this.escamas = escamas
   }
 
-  paintAnimal(animal) {
-    console.log(animal)
-    document.querySelector('.animal-info').innerHTML = `
-      <img src="${animal.imagen}" alt="${animal.nombreComun}">
-      <h2> ${animal.nombreComun} </h2>
-    `
+  static paintAnimal(animal) {
+    document.querySelector('.info2').innerHTML = `
+    <p>Escamas: ${animal.escamas}</p>
+    <p>Aletas: ${animal.aletas}</p>
+  `
   }
 }
 
 class Reptiles extends Animal {
-  constructor( nombreComun, nombreCientifico, tipoSangre, dieta, reproduccion, habitat, escamas, imagen, claseAnimal,
+  constructor(nombreComun, nombreCientifico, tipoSangre, dieta, reproduccion, habitat, escamas, imagen, claseAnimal,
   ) {
     super(nombreComun, nombreCientifico, tipoSangre, dieta, reproduccion, habitat, imagen, claseAnimal,)
     this.escamas = escamas
   }
 
-  paintAnimal(animal) {
-    console.log(animal)
-    document.querySelector('.animal-info').innerHTML = `
-      <img src="${animal.imagen}" alt="${animal.nombreComun}">
-      <h2> ${animal.nombreComun} </h2>
-    `
+  static paintAnimal(animal) {
+    document.querySelector('.info2').innerHTML = `
+    <p>Escamas: ${animal.escamas}</p>
+  `
   }
 }
 
 class Anfibio extends Animal {
-  constructor( nombreComun, nombreCientifico, tipoSangre, dieta, reproduccion, habitat, imagen, claseAnimal,) {
-    super( nombreComun, nombreCientifico, tipoSangre, dieta, reproduccion, habitat, imagen, claseAnimal,)
+  constructor(nombreComun, nombreCientifico, tipoSangre, dieta, reproduccion, habitat, imagen, claseAnimal, patas) {
+    super(nombreComun, nombreCientifico, tipoSangre, dieta, reproduccion, habitat, imagen, claseAnimal,)
+    this.patas = patas
   }
 
-  paintAnimal(animal) {
-    console.log(animal)
-    document.querySelector('.animal-info').innerHTML = `
-      <img src="${animal.imagen}" alt="${animal.nombreComun}">
-      <h2> ${animal.nombreComun} </h2>
-    `
+  static paintAnimal(animal) {
+
+    document.querySelector('.info2').innerHTML = `
+      <p>patas: ${animal.patas}</p> `
+
   }
 }
 
 class Aves extends Animal {
-  constructor( nombreComun, nombreCientifico, tipoSangre, dieta, reproduccion, habitat, plumas, imagen, claseAnimal,) {
-    super( nombreComun, nombreCientifico, tipoSangre, dieta, reproduccion, habitat, imagen, claseAnimal,)
+  constructor(nombreComun, nombreCientifico, tipoSangre, dieta, reproduccion, habitat, plumas, imagen, claseAnimal,) {
+    super(nombreComun, nombreCientifico, tipoSangre, dieta, reproduccion, habitat, imagen, claseAnimal,)
     this.plumas = plumas
   }
 
-  paintAnimal(animal) {
-    console.log(animal)
-    document.querySelector('.animal-info').innerHTML = `
-      <img src="${animal.imagen}" alt="${animal.nombreComun}">
-      <h2> ${animal.nombreComun} </h2>
+  static paintAnimal(animal) {
+    document.querySelector('.info2').innerHTML = `
+      <p>Alas: ${animal.plumas}</p>
     `
   }
 }
+
+//claseAnimal,imagen,nombreComun,nombreCientifico,dieta,reproduccion,habitat,proteccion,patas,color
 
 
 const gallery = [
   new Invertebrados(
     'Camarones',
     'Caridea',
+    'No tiene',
     'Omnívoro',
-    'Ovíparos',
+    'Ovíparo',
     'Agua',
-    'Naranja,blancos',
     'img/camaron.jpeg',
-    'invertebrado',
+    'Invertebrado',
+    'Blanco, amarillo y rosa o  marrón, rojo y verde',
+    'Exoesqueleto',
+    '10 patas',
   ),
   new Invertebrados(
     'Langostas',
     'Palinurus elephas',
+    'Fría',
     'Omnívoro',
-    'Ovíparos',
+    'Ovíparo',
     'Agua',
-    'rojos,blancas',
     'img/langosta.jpeg',
-    'invertebrado',
+    'Invertebrado',
+    'Marrones, rojizos, verdes o azules',
+    'Exoesqueleto',
+    '10 patas',
   ),
   new Invertebrados(
     'Cangrejos',
     'Brachyura',
+    'Fría',
     'Omnívoro',
-    'Ovíparos',
+    'Ovíparo',
     'Agua',
-    'rojos,blancos,naranjas',
     'img/cangrejo.jpeg',
     'invertebrado',
+    'Marrones, rojizos, verdes o azules',
+    'Exoesqueleto',
+    '10 patas',
   ),
+
   new Mamifero(
     'Caballo doméstico',
     'Equus caballus',
@@ -225,7 +275,6 @@ const gallery = [
     'Color Café',
     'img/caballo.jpeg',
     'Mamífero',
-    'vertebrados',
   ),
   new Mamifero(
     'Ballena',
@@ -254,7 +303,7 @@ const gallery = [
     'Sardina pilchardus',
     'Caliente',
     'Omnívoro',
-    'Ovíparos',
+    'Ovíparo',
     'Agua',
     'Sí',
     'Gris plateado',
@@ -266,7 +315,7 @@ const gallery = [
     'Thunnus',
     'Caliente',
     'Carnívoro',
-    'Ovíparos',
+    'Ovíparo',
     'Agua',
     'Sí',
     'Gris plateado,verde,amarillas',
@@ -278,7 +327,7 @@ const gallery = [
     'Sphoeroides lobatus',
     'Caliente',
     'Carnívoro',
-    'Ovíparos',
+    'Ovíparo',
     'Agua',
     'Sí',
     'Verde,Cafe,Negro',
@@ -327,6 +376,7 @@ const gallery = [
     'Agua y Tierra',
     'img/rana.jpeg',
     'Anfibio',
+    '4'
   ),
   new Anfibio(
     'Sapo',
@@ -337,6 +387,7 @@ const gallery = [
     'Agua y Tierra',
     'img/sapo.jpeg',
     'Anfibio',
+    '4',
   ),
   new Anfibio(
     'Salamandra',
@@ -347,6 +398,7 @@ const gallery = [
     'Agua',
     'img/salamandra.jpeg',
     'Anfibio',
+    '4',
   ),
   new Aves(
     'Ganso',
@@ -382,21 +434,6 @@ const gallery = [
     'aves',
   ),
 ]
+
+console.log(gallery)
 Animal.paintJustImages(gallery)
-console.log(gallery);
-
-
-function addAnimalId () {
-  for (let i = 0; i < gallery.length; i++) {
-    gallery[i].AnimalId = i + 1;
-  }
-}
-addAnimalId()
-
-const invertebrado = new Invertebrados()
-const mamifero = new Mamifero()
-const reptil = new Reptiles()
-const ave = new Aves()
-const anfibio = new Anfibio()
-const pez = new Peces()
-
