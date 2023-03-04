@@ -11,7 +11,7 @@ class Animal {
     this.claseAnimal = claseAnimal
 
 
-    document.querySelector('.container').addEventListener('click', Animal.clickImage.bind(this))
+    document.querySelector('.container').addEventListener('click', Animal.clickEvents)
   }
 
   static paintJustImages(arrGallery) {
@@ -24,10 +24,19 @@ class Animal {
     }).join('')
   }
 
-  static clickImage (e) {
+  static openCard () {
+    document.querySelector('.card').classList.toggle('show-card');
+
+    document.querySelector('#btn-close').addEventListener('click', () => {
+      document.querySelector('.card').classList.remove('show-card')
+    })
+  }
+
+  static clickEvents (e) {
     console.clear();
 
     if(e.target.matches('img')) {
+      Animal.openCard()
       console.log(e.target);
     }
 
