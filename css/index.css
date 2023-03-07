@@ -24,30 +24,23 @@ body {
 
 .gallery {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(225px, 1fr));
   gap: 20px;
   list-style: none;
   padding-right: 50px;
   margin: auto;
   width: 100%;
-  height: 95vh;
+  height: auto;
   overflow-y: auto;
-}
-
-img {
-  height: 200px;
-  width: 200px;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.9), 0 6px 20px 0 rgba(0, 0, 0, 0.22)
 }
 
 .hidden {
   display: none;
 }
 
-
 .show-card {
   display: initial;
-  height: 100vh;
+  height: 100%;
   width: 100%;
   background-color: rgba(14, 14, 14, 0.877);
   position: absolute;
@@ -56,32 +49,49 @@ img {
   transform: translate(-50%, -50%);
   display: flex;
   justify-content: center;
-  align-items: center;
+  padding-top: 350px;
 }
 
 .container input {
   border-radius: 10%;
 }
 
+.gallery li {
+  width: fit-content;
+  height: fit-content;
+}
+
 
 .gallery img {
   border-radius: 10%;
+  cursor: pointer;
+  transition: all 0.5s;
+  margin: 5px 0px;
+  width: 225px;
+  height: 200px;
 }
 
+.gallery img:hover{
+  transform: scale(1.070);
+  box-shadow: 15px 15px 30px #bebebe;
+}
+
+.gallery img:hover {
+  background: #e0e0e0;
+  box-shadow: 5px 5px 10px #222222;
+}
 
 #btn-close {
   color: rgb(255, 255, 255);
   background-color: #2E3840;
   font-size: 1.6rem;
   font-weight: 500;
-
   border: none;
   padding: 5px 12px;
 }
 
 #btn-close:hover {
   color: rgb(255, 255, 255);
-
   background-color: #ff1212;
 }
 
@@ -94,41 +104,22 @@ img {
 
 .modal {
   width: 600px;
-  height: 625px;
-  background-color: rgb(253, 253, 253);
+  height: 750px;
+  background-color: rgb(238, 238, 238);
 }
-/*
-.card {
-  width: 11.875em;
-  height: 16.5em;
-  box-shadow: 0px 1px 13px rgba(0,0,0,0.1);
-  cursor: pointer;
-  transition: all 120ms;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: #fff;
-  padding: 0.5em;
-  padding-bottom: 3.4em;
- }
 
- .card::after {
-  content: "Add to Cart";
-  padding-top: 1.25em;
-  padding-left: 1.25em;
-  position: absolute;
-  left: 0;
-  bottom: -60px;
-  background: #00AC7C;
-  color: #fff;
-  height: 2.5em;
-  width: 100%;
-  transition: all 80ms;
-  font-weight: 600;
-  text-transform: uppercase;
- }
- 
- .card:hover::after {
-  bottom: 0;
- }
- */
+.info1 img{
+  width: 220px;
+  height: 200px;
+  padding-top: 5px;
+  border-radius: 100%;
+}
+
+.animal-info{
+  text-align: center;
+}
+
+.animal-info span{
+  font-weight: 400;
+}
+

@@ -19,9 +19,11 @@ class Animal {
 
     document.getElementById('gallery').innerHTML = arrGallery.map((item) => {
       return `
-        <li class="flex">
+      
+        <li>
           <img src="${item.imagen}" alt="${item.nombreComun}" data-id="${item.idAnimal}">
         </li>
+     
       `
     }).join('')
   }
@@ -101,13 +103,13 @@ class Animal {
   static paintAnimal(animal) {
     document.querySelector('.info1').innerHTML = `
     <img src="${animal.imagen}" alt="${animal.nombreComun}">
-    <h2>Nombre Común: ${animal.nombreComun} </h2>
-    <h3>Nombre Cientifico: ${animal.nombreCientifico}</h3>
-    <p>Clase Animal: ${animal.claseAnimal}</p>
-    <p>Hatitat: ${animal.habitat}</p>
-    <p>Tipo de Sangre: ${animal.tipoSangre}</p>
-    <p>Reproduccion: ${animal.reproduccion}</p>
-    <p>Dieta: ${animal.dieta}</p>
+    <h2>Nombre Común: <span>${animal.nombreComun}</span></h2>
+    <h2>Nombre Cientifico: <span>${animal.nombreCientifico}</span></h2>
+    <h2>Clase Animal: <span>${animal.claseAnimal}</span></h2>
+    <h2>Hatitat: <span>${animal.habitat}</span></h2>
+    <h2>Tipo de Sangre: <span>${animal.tipoSangre}</span></h2>
+    <h2>Reproduccion: <span>${animal.reproduccion}</span></h2>
+    <h2>Dieta: <span>${animal.dieta}</span></h2>
   `
   }
 }
@@ -122,9 +124,9 @@ class Invertebrados extends Animal {
   }
   static paintAnimal(animal) {
     document.querySelector('.info2').innerHTML = `
-    <p>Color: ${animal.color}</p>
-    <p>proteccion: ${animal.proteccion}</p>
-    <p>patas: ${animal.patas}</p>
+    <h2>Color: <span>${animal.color}</span></h2>
+    <h2>proteccion: <span>${animal.proteccion}</span></h2>
+    <h2>patas: <span>${animal.patas}</span></h2>
     `
   }
 }
@@ -158,7 +160,7 @@ class Mamifero extends Animal {
 
   static paintAnimal(animal) {
     document.querySelector('.info2').innerHTML = `
-      <p>Pelo: ${animal.pelo}</p>
+      <h2>Pelo: <span>${animal.pelo}</span></h2>
     `
   }
 }
@@ -172,8 +174,8 @@ class Peces extends Animal {
 
   static paintAnimal(animal) {
     document.querySelector('.info2').innerHTML = `
-    <p>Escamas: ${animal.escamas}</p>
-    <p>Aletas: ${animal.aletas}</p>
+    <h2>Escamas: <span>${animal.escamas}</span></h2>
+    <h2>Aletas: <span>${animal.aletas}</span></h2>
   `
   }
 }
@@ -187,7 +189,7 @@ class Reptiles extends Animal {
 
   static paintAnimal(animal) {
     document.querySelector('.info2').innerHTML = `
-    <p>Escamas: ${animal.escamas}</p>
+    <h2>Escamas: <span>${animal.escamas}</span></h2>
   `
   }
 }
@@ -201,7 +203,7 @@ class Anfibio extends Animal {
   static paintAnimal(animal) {
 
     document.querySelector('.info2').innerHTML = `
-      <p>Patas: ${animal.patas}</p> `
+      <h2>Patas: <span>${animal.patas}</span></h2> `
 
   }
 }
@@ -214,14 +216,14 @@ class Aves extends Animal {
 
   static paintAnimal(animal) {
     document.querySelector('.info2').innerHTML = `
-      <p>Alas: ${animal.plumas}</p>
+      <h2>Alas: <span>${animal.plumas}</span></h2>
     `
   }
 }
 
 const gallery = [
   new Invertebrados(
-    'Camarones',
+    'Camarón',
     'Caridea',
     'Fría',
     'Omnívoro',
@@ -229,13 +231,13 @@ const gallery = [
     'Agua',
     'img/camaron.jpeg',
     'Invertebrado',
-    'Blanco, amarillo y rosa o  marrón, rojo y verde',
+    'Blanco y rosa o marrón y rojo ',
     'Exoesqueleto',
     '10 patas',
   ),
 
   new Invertebrados(
-    'Langostas',
+    'Langosta',
     'Palinurus elephas',
     'Fría',
     'Omnívoro',
@@ -249,14 +251,14 @@ const gallery = [
   ),
 
   new Invertebrados(
-    'Cangrejos',
+    'Cangrejo',
     'Brachyura',
     'Fría',
     'Omnívoro',
     'Ovíparo',
     'Agua',
     'img/cangrejo.jpeg',
-    'invertebrado',
+    'Invertebrado',
     'Marrones, rojizos, verdes o azules',
     'Exoesqueleto',
     '10 patas',
