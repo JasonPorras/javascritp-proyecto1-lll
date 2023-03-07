@@ -112,8 +112,6 @@ class Animal {
   }
 }
 
-
-
 class Invertebrados extends Animal {
   constructor(nombreComun, nombreCientifico, tipoSangre, dieta, reproduccion, habitat, imagen, claseAnimal, color, proteccion, patas) {
     super(nombreComun, nombreCientifico, tipoSangre, dieta, reproduccion, habitat, imagen, claseAnimal,)
@@ -203,7 +201,7 @@ class Anfibio extends Animal {
   static paintAnimal(animal) {
 
     document.querySelector('.info2').innerHTML = `
-      <p>patas: ${animal.patas}</p> `
+      <p>Patas: ${animal.patas}</p> `
 
   }
 }
@@ -221,14 +219,11 @@ class Aves extends Animal {
   }
 }
 
-//claseAnimal,imagen,nombreComun,nombreCientifico,dieta,reproduccion,habitat,proteccion,patas,color
-
-
 const gallery = [
   new Invertebrados(
     'Camarones',
     'Caridea',
-    'No tiene',
+    'Fría',
     'Omnívoro',
     'Ovíparo',
     'Agua',
@@ -238,6 +233,7 @@ const gallery = [
     'Exoesqueleto',
     '10 patas',
   ),
+
   new Invertebrados(
     'Langostas',
     'Palinurus elephas',
@@ -251,6 +247,7 @@ const gallery = [
     'Exoesqueleto',
     '10 patas',
   ),
+
   new Invertebrados(
     'Cangrejos',
     'Brachyura',
@@ -266,171 +263,185 @@ const gallery = [
   ),
 
   new Mamifero(
-    'Caballo doméstico',
-    'Equus caballus',
+    'Ballena beluga',
+    'Delphinapterus leucas',
     'Caliente',
-    'Herbívoros',
+    'Carnívoro',
+    'Vivíparo',
+    'Agua',
+    'No.(Piel blanca o gris claro)',
+    'img/ballena-beluga.jpeg',
+    'Mamífero',
+  ),
+
+  new Mamifero(
+    'Coala',
+    'Phascolarctos cinereus',
+    'Caliente',
+    'Herbívoro',
     'Vivíparo',
     'Tierra',
-    'Color Café',
-    'img/caballo.jpeg',
+    'Color gris-plateado',
+    'img/coala.jpeg',
     'Mamífero',
   ),
+
   new Mamifero(
-    'Ballena',
-    'Cetacea',
-    'Caliente',
-    'Carnívoro',
-    'Vivíparo',
-    'Agua',
-    'No presenta',
-    'img/ballena.jpeg',
-    'Mamífero',
-  ),
-  new Mamifero(
-    'Delfín',
-    'Delphinidae',
-    'Caliente',
-    'Carnívoro',
-    'Vivíparo',
-    'Agua',
-    'No presenta',
-    'img/delfines.jpeg',
-    'Mamífero',
-  ),
-  new Peces(
-    'Sardinas',
-    'Sardina pilchardus',
+    'Panda rojo',
+    'Ailurus fulgens',
     'Caliente',
     'Omnívoro',
-    'Ovíparo',
-    'Agua',
-    'Sí',
-    'Gris plateado',
-    'img/sardina.jpeg',
-    'pez',
+    'Vivíparo',
+    'Tierra',
+    'Color rojo,amarillo,blanco y negro',
+    'img/panda-rojo.jpeg',
+    'Mamífero',
   ),
+
   new Peces(
-    'Atún',
-    'Thunnus',
-    'Caliente',
-    'Carnívoro',
-    'Ovíparo',
-    'Agua',
-    'Sí',
-    'Gris plateado,verde,amarillas',
-    'img/atun.jpeg',
-    'pez',
-  ),
-  new Peces(
-    'Pez Sapo',
-    'Sphoeroides lobatus',
-    'Caliente',
-    'Carnívoro',
-    'Ovíparo',
-    'Agua',
-    'Sí',
-    'Verde,Cafe,Negro',
-    'img/pez sapo.jpeg',
-    'pez',
-  ),
-  new Reptiles(
-    'Caimán de Cuvier',
-    'Paleosuchus palpebrosus',
+    'Caballito de mar',
+    'Hippocampus',
     'Fría',
     'Carnívoro',
     'Ovíparo',
-    'Agua y Tierra',
-    'Verde Musgo',
-    'img/caiman-cuvier.jpeg',
-    'reptil',
+    'Agua',
+    '1',
+    'Color amarillas, naranjas, rojas, rosas, verdes y marrones',
+    'img/caballito.jpeg',
+    'pez',
   ),
-  new Reptiles(
-    'Anaconda común',
-    'Eunectes murinus',
+
+  new Peces(
+    'Pez payaso',
+    'Amphiprioninae',
     'Fría',
     'Carnívoro',
     'Ovíparo',
-    'Agua y Tierra',
-    'Amarillas y manchas oscuras de color marrón y negro',
-    'img/anaconda.jpeg',
-    'reptil',
+    'Agua',
+    '5',
+    'Color blancas y anaranjadas.',
+    'img/pez-payaso.jpeg',
+    'pez',
   ),
-  new Reptiles(
-    'Iguana rinoceronte',
-    'Cyclura cornuta',
+
+  new Peces(
+    'Pez cirujano',
+    'Acanthuridae',
     'Fría',
     'Herbívoro',
     'Ovíparo',
-    'Tierra',
-    'Marrón-grisáceo o verde oliva',
-    'img/iguana-rinoceronte.jpeg',
-    'reptil',
+    'Agua',
+    '6',
+    'Color azul marino, amarillo y negro',
+    'img/cirujano-azul.jpeg',
+    'pez',
   ),
-  new Anfibio(
-    'Rana',
-    'Anura',
+
+  new Reptiles(
+    'Dragon de komodo',
+    'Varanus komodoensis',
     'Fría',
     'Carnívoro',
     'Ovíparo',
-    'Agua y Tierra',
+    'Tierra',
+    'Color gris sólido a marrón rojizo',
+    'img/dragon-komodo.jpeg',
+    'reptil',
+  ),
+
+  new Reptiles(
+    'Tortuga marina verde',
+    'Chelonia mydas',
+    'Fría',
+    'Herbívoro',
+    'Ovíparo',
+    'Agua',
+    'Color marrón u oliva.',
+    'img/t-verde.jpeg',
+    'reptil',
+  ),
+
+  new Reptiles(
+    'Lagartija cornuda',
+    'Phrynosoma coronatum',
+    'Fría',
+    'Omnívoro',
+    'Ovíparo',
+    'Tierra',
+    'Color marrón o grisácea',
+    'img/lagartija.jpeg',
+    'reptil',
+  ),
+
+  new Anfibio(
+    'Rana arbórea de ojos rojos',
+    'Agalychnis callidryas',
+    'Fría',
+    'Carnívoro',
+    'Ovíparo',
+    'Tierra',
     'img/rana.jpeg',
     'Anfibio',
     '4'
   ),
+
   new Anfibio(
-    'Sapo',
-    'Bufonidae',
-    'Fría',
-    'Carnívoro',
-    'Ovíparo',
-    'Agua y Tierra',
-    'img/sapo.jpeg',
-    'Anfibio',
-    '4',
-  ),
-  new Anfibio(
-    'Salamandra',
-    'Urodela',
+    'Ajolote mexicano',
+    'Ambystoma mexicanum',
     'Fría',
     'Carnívoro',
     'Ovíparo',
     'Agua',
-    'img/salamandra.jpeg',
+    'img/ajolote.jpeg',
     'Anfibio',
     '4',
   ),
-  new Aves(
-    'Ganso',
-    'Anser',
-    'Caliente',
+
+  new Anfibio(
+    'Sapo común',
+    'Bufo bufo',
+    'Fría',
     'Omnívoro',
     'Ovíparo',
-    'Tierra',
-    'Blancas,Grises,Marrones',
-    'img/ganso.jpeg',
-    'aves',
+    'Ambos',
+    'img/sapo.jpeg',
+    'Anfibio',
+    '4',
   ),
+
   new Aves(
-    'Cuervo',
-    'Corvus corax',
-    'Caliente',
-    'Omnívoro',
-    'Ovíparo',
-    'Tierra',
-    'Negras',
-    'img/cuervo.jpeg',
-    'aves',
-  ),
-  new Aves(
-    'Búho',
-    'Strigiformes',
+    'Águila calva',
+    'Haliaeetus leucocéphalus',
     'Caliente',
     'Carnívoro',
     'Ovíparo',
     'Tierra',
-    'Blancas,Marrones,Gris,Negro',
-    'img/buho.jpeg',
+    'Color blancas y marrón oscuro',
+    'img/aguila.jpeg',
+    'aves',
+  ),
+
+  new Aves(
+    'Cisne chico',
+    'Cygnus columbianus',
+    'Caliente',
+    'Omnívoro',
+    'Ovíparo',
+    'Agua',
+    'Color blancas y marrón',
+    'img/cisne.jpeg',
+    'aves',
+  ),
+
+  new Aves(
+    'Flamenco rosa',
+    'Phoenicopterus roseus',
+    'Caliente',
+    'Omnívoro',
+    'Ovíparo',
+    'Ambos',
+    'Color rosa',
+    'img/flamenco.jpeg',
     'aves',
   ),
 ]
