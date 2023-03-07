@@ -100,14 +100,16 @@ class Animal {
 
   static paintAnimal(animal) {
     document.querySelector('.info1').innerHTML = `
-    <img src="${animal.imagen}" alt="${animal.nombreComun}">
-    <h2>Nombre Común: ${animal.nombreComun} </h2>
-    <h3>Nombre Cientifico: ${animal.nombreCientifico}</h3>
-    <p>Clase Animal: ${animal.claseAnimal}</p>
-    <p>Hatitat: ${animal.habitat}</p>
-    <p>Tipo de Sangre: ${animal.tipoSangre}</p>
-    <p>Reproduccion: ${animal.reproduccion}</p>
-    <p>Dieta: ${animal.dieta}</p>
+    <img src="${animal.imagen}" alt="${animal.nombreComun}" class="card__img">
+    <div>
+      <h2>${animal.nombreComun} </h2>
+      <h3>Nombre Cientifico: ${animal.nombreCientifico}</h3>
+      <p>Clase Animal: ${animal.claseAnimal}</p>
+      <p>Hatitat: ${animal.habitat}</p>
+      <p>Tipo de Sangre: ${animal.tipoSangre}</p>
+      <p>Reproduccion: ${animal.reproduccion}</p>
+      <p>Dieta: ${animal.dieta}</p>
+    </div>
   `
   }
 }
@@ -130,29 +132,8 @@ class Invertebrados extends Animal {
 }
 
 class Mamifero extends Animal {
-  constructor(
-    nombreComun,
-    nombreCientifico,
-    tipoSangre,
-    dieta,
-    reproduccion,
-    habitat,
-    pelo,
-    imagen,
-    claseAnimal,
-
-  ) {
-    super(
-      nombreComun,
-      nombreCientifico,
-      tipoSangre,
-      dieta,
-      reproduccion,
-      habitat,
-      imagen,
-      claseAnimal,
-
-    )
+  constructor( nombreComun, nombreCientifico, tipoSangre, dieta, reproduccion, habitat, pelo, imagen, claseAnimal,) {
+    super( nombreComun, nombreCientifico, tipoSangre, dieta, reproduccion, habitat, imagen, claseAnimal,)
     this.pelo = pelo
   }
 
@@ -256,7 +237,7 @@ const gallery = [
     'Ovíparo',
     'Agua',
     'img/cangrejo.jpeg',
-    'invertebrado',
+    'Invertebrado',
     'Marrones, rojizos, verdes o azules',
     'Exoesqueleto',
     '10 patas',
@@ -444,6 +425,19 @@ const gallery = [
     'img/flamenco.jpeg',
     'aves',
   ),
+  new Invertebrados(
+    'Abeja',
+    'Apis mellifera',
+    'Fría',
+    'Herbívoro',
+    'Ovíparo',
+    'Aire',
+    'img/abeja.jpg',
+    'Invertebrado',
+    'Rayas amarillas y negras en su cuerpo',
+    'Exoesqueleto',
+    '6',
+  )
 ]
 
 console.log(gallery)
