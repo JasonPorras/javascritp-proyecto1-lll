@@ -4,17 +4,21 @@ body {
 }
 
 .container {
-  display: flex;
-  padding-left: 50px;
+  display: grid;
+  grid-template-columns: 300px 1fr;
   margin: 0 auto;
   gap: 20px;
+  width: 100%;
+  align-items: center;
+  overflow: hidden;
 }
 
 .bar {
   display: flex;
   flex-direction: column;
-  width: 300px;
+
   height: 100vh;
+  padding-left: 50px;
   overflow: auto;
 }
 
@@ -25,13 +29,18 @@ body {
 .gallery {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(225px, 1fr));
-  gap: 20px;
+  gap: 10px;
   list-style: none;
-  padding-right: 50px;
+  padding: 0;
   margin: auto;
   width: 100%;
-  height: auto;
   overflow-y: auto;
+}
+
+.gallery-container {
+  display: flex;
+  flex-direction: column;
+  height: 95vh;
 }
 
 .hidden {
@@ -49,7 +58,7 @@ body {
   transform: translate(-50%, -50%);
   display: flex;
   justify-content: center;
-  padding-top: 350px;
+  align-items: center;
 }
 
 .container input {
@@ -104,7 +113,6 @@ body {
 
 .modal {
   width: 600px;
-  height: 750px;
   background-color: rgb(238, 238, 238);
 }
 
@@ -117,6 +125,8 @@ body {
 
 .animal-info{
   text-align: center;
+  overflow: auto;
+  height: 600px;
 }
 
 .animal-info span{
