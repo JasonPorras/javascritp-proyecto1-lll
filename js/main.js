@@ -125,8 +125,8 @@ class Invertebrados extends Animal {
   static paintAnimal(animal) {
     document.querySelector('.info2').innerHTML = `
     <h2>Color: <span>${animal.color}</span></h2>
-    <h2>proteccion: <span>${animal.proteccion}</span></h2>
-    <h2>patas: <span>${animal.patas}</span></h2>
+    <h2>Proteccion: <span>${animal.proteccion}</span></h2>
+    <h2>Patas: <span>${animal.patas}</span></h2>
     `
   }
 }
