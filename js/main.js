@@ -132,29 +132,8 @@ class Invertebrados extends Animal {
 }
 
 class Mamifero extends Animal {
-  constructor(
-    nombreComun,
-    nombreCientifico,
-    tipoSangre,
-    dieta,
-    reproduccion,
-    habitat,
-    pelo,
-    imagen,
-    claseAnimal,
-
-  ) {
-    super(
-      nombreComun,
-      nombreCientifico,
-      tipoSangre,
-      dieta,
-      reproduccion,
-      habitat,
-      imagen,
-      claseAnimal,
-
-    )
+  constructor( nombreComun, nombreCientifico, tipoSangre, dieta, reproduccion, habitat, pelo, imagen, claseAnimal,) {
+    super( nombreComun, nombreCientifico, tipoSangre, dieta, reproduccion, habitat, imagen, claseAnimal,)
     this.pelo = pelo
   }
 
@@ -446,6 +425,19 @@ const gallery = [
     'img/flamenco.jpeg',
     'aves',
   ),
+  new Invertebrados(
+    'Abeja',
+    'Apis mellifera',
+    'Fría',
+    'Herbívoro',
+    'Ovíparo',
+    'Aire',
+    'img/abeja.jpg',
+    'Invertebrado',
+    'Rayas amarillas y negras en su cuerpo',
+    'Exoesqueleto',
+    '6',
+  )
 ]
 
 console.log(gallery)
