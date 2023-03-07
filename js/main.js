@@ -202,6 +202,19 @@ class Aves extends Animal {
 
 const gallery = [
   new Invertebrados(
+    'Abeja',
+    'Apis mellifera',
+    'Fría',
+    'Herbívoro',
+    'Ovíparo',
+    'Aire',
+    'img/abeja.jpg',
+    'Invertebrado',
+    'Rayas amarillas y negras en su cuerpo',
+    'Exoesqueleto',
+    '6',
+  ),
+  new Invertebrados(
     'Camarón',
     'Caridea',
     'Fría',
@@ -425,19 +438,6 @@ const gallery = [
     'img/flamenco.jpeg',
     'aves',
   ),
-  new Invertebrados(
-    'Abeja',
-    'Apis mellifera',
-    'Fría',
-    'Herbívoro',
-    'Ovíparo',
-    'Aire',
-    'img/abeja.jpg',
-    'Invertebrado',
-    'Rayas amarillas y negras en su cuerpo',
-    'Exoesqueleto',
-    '6',
-  )
 ]
 
 console.log(gallery)
